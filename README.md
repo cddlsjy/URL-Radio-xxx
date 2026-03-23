@@ -7,7 +7,7 @@
 **URL Radio only offers a very basic search option, and it imports audio streaming links when you tap them in a web browser.** <br>
 **Pull request are welcome at any time.**<br>
 
-**URL Radio is free software. It is released under the [MIT open source license](https://opensource.org/licenses/MIT).**
+**URL Radio is free software. 只能用于Android6.0,It is released under the [MIT open source license](https://opensource.org/licenses/MIT).**
 </div>
 
 ----------------------------------------
