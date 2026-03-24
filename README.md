@@ -7,7 +7,7 @@
 **URL Radio only offers a very basic search option, and it imports audio streaming links when you tap them in a web browser.** <br>
 **Pull request are welcome at any time.**<br>
 
-**URL Radio is free software. 原版只能用于Android6.0，设置minisdk=21就可以android5机器上运行,这点比只能在android7上运行的transistor强。It is released under the [MIT open source license](https://opensource.org/licenses/MIT).**
+**URL Radio is free software. 原版只能用于Android6.0，设置minisdk=21就可以android5机器上运行,transistor也可以同样修改。It is released under the [MIT open source license](https://opensource.org/licenses/MIT).**
 </div>
 
 ----------------------------------------
