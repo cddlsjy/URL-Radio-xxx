@@ -420,6 +420,17 @@ class PlayerFragment : Fragment(),
         requestMetadataUpdate()
         // handle start intent
         handleStartIntent()
+        autoStartPlayback(controller) //自动播放
+    }
+
+        /* Auto-start playback logic */
+    private fun autoStartPlayback(controller: MediaController) {
+        if (collection.stations.isNotEmpty() && !controller.isPlaying) {
+            // 确保 playerState 已初始化（防止极端情况下的 NPE）
+            val stationPosition = playerState?.stationPosition ?: 0
+            val playPosition = stationPosition.coerceIn(0, collection.stations.size - 1)
+            controller.play(requireContext(), playPosition)
+        }
     }
 
 
