@@ -425,16 +425,17 @@ class PlayerFragment : Fragment(),
 
      /* Auto-start playback logic */
 private fun autoStartPlayback(controller: MediaController) {
+
     if (collection.stations.isNotEmpty() && !controller.isPlaying) {
-        // 确保 playerState 已初始化（防止极端情况下的 NPE）
-        val stationPosition = playerState?.stationPosition ?: 0
-        val playPosition = stationPosition.coerceIn(0, collection.stations.size - 1)        
-        // 修复：通过位置获取 Station 对象，再传入播放方法
-        val station = collection.stations[playPosition]
+        // 获取要播放的电台：优先使用上次播放的 stationUuid，否则播放第一个
+        val station = if (playerState.stationUuid.isNotEmpty()) {
+            CollectionHelper.getStation(collection, playerState.stationUuid)
+        } else {
+            collection.stations[0]
+        }
         controller.play(requireContext(), station)
     }
 }
-   
 
 
     /* Sets up views and connects tap listeners - first run */
