@@ -423,15 +423,18 @@ class PlayerFragment : Fragment(),
         autoStartPlayback(controller) //自动播放
     }
 
-        /* Auto-start playback logic */
-    private fun autoStartPlayback(controller: MediaController) {
-        if (collection.stations.isNotEmpty() && !controller.isPlaying) {
-            // 确保 playerState 已初始化（防止极端情况下的 NPE）
-            val stationPosition = playerState?.stationPosition ?: 0
-            val playPosition = stationPosition.coerceIn(0, collection.stations.size - 1)
-            controller.play(requireContext(), playPosition)
-        }
+     /* Auto-start playback logic */
+private fun autoStartPlayback(controller: MediaController) {
+    if (collection.stations.isNotEmpty() && !controller.isPlaying) {
+        // 确保 playerState 已初始化（防止极端情况下的 NPE）
+        val stationPosition = playerState?.stationPosition ?: 0
+        val playPosition = stationPosition.coerceIn(0, collection.stations.size - 1)        
+        // 修复：通过位置获取 Station 对象，再传入播放方法
+        val station = collection.stations[playPosition]
+        controller.play(requireContext(), station)
     }
+}
+   
 
 
     /* Sets up views and connects tap listeners - first run */
